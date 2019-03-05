@@ -28,9 +28,9 @@ public class RedisUtil {
 		String[] address = properties.getProperty("ip").split(":");
 		int port = Integer.valueOf(address[1]);
 		int timeout = Integer.valueOf(properties.getProperty("timeout"));
-		config.setMaxActive(maxActive);
+		config.setMaxTotal(maxActive);
 		config.setMaxIdle(maxIdle);
-		config.setMaxWait(maxWait);
+		config.setMaxWaitMillis(maxWait);
 		config.setTestOnBorrow(testOnBorrow);
 		JedisPool pool = new JedisPool(config, address[0], port, timeout);
 		return pool;

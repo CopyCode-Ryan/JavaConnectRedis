@@ -32,9 +32,9 @@ public class JedisPoolUtil {
 			String host = properties.getProperty("host");
 			int port = Integer.valueOf(properties.getProperty("port"));
 			int timeout = Integer.valueOf(properties.getProperty("timeout"));
-			config.setMaxActive(maxActive);
+			config.setMaxTotal(maxActive);
 			config.setMaxIdle(maxIdle);
-			config.setMaxWait(maxWait);
+			config.setMaxWaitMillis(maxWait);
 			config.setTestOnBorrow(testOnBorrow);
 			jedisPool = new JedisPool(config, host, port, timeout);
 		}
