@@ -41,7 +41,10 @@ public class JedisPoolUtil {
 		return jedisPool;
 	}
 
-	public static Jedis getJedis() {
+	public static Jedis getJedis() throws IOException {
+		if(jedisPool == null) {
+			jedisPool = getJedisPool();
+		}
 		return jedisPool == null ? null : jedisPool.getResource();
 	}
 }
